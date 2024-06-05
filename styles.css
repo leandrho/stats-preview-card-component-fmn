@@ -1,0 +1,177 @@
+@font-face {
+    font-family: Inter;
+    src: url("./assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+@font-face {
+    font-family: LexendDeca;
+    src: url("./assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+:root{
+    --very-dark-blue-mainbg: hsl(233, 47%, 7%);
+    --dark-desaturated-blue-cardbg: hsl(244, 38%, 16%);
+    --soft-violet-accent: hsl(277, 64%, 61%);
+
+    --white-neutral: hsl(0, 0%, 100%);
+
+    --slightly-transparent-white-mainparagraph: hsla(0, 0%, 100%, 0.75);
+    --slightly-transparent-white-stat-headings: hsla(0, 0%, 100%, 0.6);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    font-family: Inter;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--very-dark-blue-mainbg);
+    color: var(--white-neutral);
+}
+img{
+    width: 100%;
+}
+.card{
+    background-color: var(--dark-desaturated-blue-cardbg);
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    height: 446px;
+    max-width: 1110px;
+    border-radius: 0.75rem;
+}
+.card__img{
+    grid-area: 1/10/9/17 ;
+    border-radius: 0 0.75rem 0.75rem;
+}
+.card__picture{
+    width: 100%;
+    height: 100%;
+    background-image: url('./images/image-header-desktop.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: inherit;
+    position: relative;
+    
+}
+.card__picture::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  var(--soft-violet-accent);
+    mix-blend-mode: multiply;
+    
+}
+
+.card__content{
+    grid-area: 2/3/8/10; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.card__main{
+    display: grid;
+    gap: 1.8rem;
+    width: 80%;
+}
+.card__title{
+    font-size: 2rem;
+}
+.card__title span{
+    color: var(--soft-violet-accent);
+}
+.card__text{
+    line-height: 1.5;
+    color: var(--slightly-transparent-white-mainparagraph);
+}
+.card__footer{
+    width: 80%;
+    display: flex;
+    gap: 3.875rem;
+}
+.card__footer__item h2{
+    margin-bottom: 0.75rem;
+    font-size: 1.375rem;
+}
+.card__footer__item p{
+    font-size: 0.75rem;
+    font-family: LexendDeca;
+    text-transform: uppercase;
+    color: var(--slightly-transparent-white-stat-headings);
+}
+
+@media screen and (max-width: 1200px) {
+    .card{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 850px) {
+
+    .card{
+       height: auto;
+       width: 90%;
+       max-width: 420px;    
+    }
+    .card__img{
+        grid-area: 1/1/4/17;
+        border-radius: 0.75rem 0.75rem 0 0;
+    }
+    
+    .card__content{
+        grid-area: 4/1/9/17;
+        padding-block: 2rem;
+        place-items: center;
+        place-content: center;
+        gap: 4rem;
+    }
+    .card__title{
+        font-size: 1.75rem;
+    }
+    .card__main{
+        text-align: center;
+    }
+    .card__footer{
+        gap: 2rem;
+        justify-content: center;
+    }
+    .card__picture{
+        background-image: url('./images/image-header-mobile.jpg');
+
+    }
+}
+@media screen and (max-width: 500px) {
+    .card{
+        width: 90%;
+        max-height: 95%;
+    }
+    .card__main{
+        gap: 1rem;
+        width: 100%;
+    }    
+    .card__content{
+        width: 100%;
+        height: 100%;
+        gap: 1rem;
+    }
+    .card__title{
+        font-size: 1.5rem;
+    }
+    .card__text{
+        font-size: 14px;
+    }
+    .card__footer{
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+        align-items: center;
+    }
+}
